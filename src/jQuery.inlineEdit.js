@@ -38,15 +38,9 @@
 		saveButtonURL: '#',
 
 		// Callback functions when save button is clicked
-		onAjaxFailed: function(jqXHR, textStatus, errorThrown) {
-			alert("Ajax Error:\n" + jqXHR + "\n" + textStatus + "\n" + errorThrown);
-		}, // Called when an AJAX request fails
-		onSaveFailed: function(result) {
-			alert("Save failed: " + result);
-		}, // Called when [success: true] is returned by server
-		onSaveSuccessful: function(result) {
-			alert("Save successful: " + result);
-		}, // Called when [success: false] is returned by server
+		onAjaxFailed: function(jqXHR, textStatus, errorThrown) {}, // Called when an AJAX request fails
+		onSaveFailed: function(result) {}, // Called when [success: true] is returned by server
+		onSaveSuccessful: function(result) {}, // Called when [success: false] is returned by server
 
 		// Classes for elements acting as Edit, Save and Cancel buttons
 		editButtonClass: 'inlineEdit-action-edit',

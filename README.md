@@ -16,11 +16,6 @@ Features:
 >  - Update the row with new values upon successful save operation
 >  - Perform custom operations by specifying callback functions when save operation is successful, fails or an error occurs during the AJAX call
 
-Table of Contents
-------------------
-
-[TOC]
-
 How to use
 =========
 
@@ -40,9 +35,9 @@ Attribute       | Description
 `type`          | Specifies the editing type of the column. If this attribute is not defined, the column won't be editable. Supported values: `"date"`, `"hidden"`, `"number"`, `"percentage"`, `"select"`, `"text"`, `"textarea"`
 `class`         | The class to be applied to the input element generated for this column. Specifying this attribute will override the class specified in the options for that field's input type
 `data`          | The function that will return an object containing a set of key value pairs that will be used to populate list of items in `select` dropdown lists if the `type` attribute is `select`. Key denotes the text that will be displayed in the dropdown. Value denotes the content of `value` attribute of the `option` element
-`datePicker`    | The function that will be responsible to attach a date picker to this input field if the `type` attribute is `date`. If not specified, the date picker function specified in options is used. *If both are not defined, the generated input field will fall back to use HTML5 date input field*
+`datePicker`    | The function that will be responsible for attaching a date picker to this input field if the `type` attribute is `date`. If not specified, the date picker function specified in options is used. *If both are not defined, the generated input field will fall back to use HTML5 date input field*
 `name`          | The content of the `name` attribute that will be added to the generated `input`, `select` or `textarea` element
-`validator`     | The function that will be invoked to validate the input of this column before the data is posted to the server upon clicking the save button
+`validator`     | The function that will be invoked to validate the input of this column before the data is posted to the server upon clicking the save button. This function should return false to prevent the form from being submitted
 
 Options
 -------
