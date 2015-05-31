@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>jQuery.inlineEdit | Mayank K Rastogi</title>
+    <meta name="description" content="jQuery.inlineEdit is a simple and lightweight jQuery plugin by Mayank K Rastogi that allows you to edit your html table rows inline.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<table id="sampleTable">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Job</th>
+            <th>Hire Date</th>
+            <th>Salary</th>
+            <th>Commission</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td inlineEdit-type="hidden" inlineEdit-name="employeeId">1</td>
+            <td inlineEdit-type="text" inlineEdit-name="name">Johnson</td>
+            <td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs">Admin</td>
+            <td inlineEdit-type="date" inlineEdit-name="hireDate">1990-12-17</td>
+            <td inlineEdit-type="number" inlineEdit-name="salary">18000</td>
+            <td inlineEdit-type="percentage" inlineEdit-name="commission">0%</td>
+            <td inlineEdit-type="textarea" inlineEdit-name="comments">Hard working</td>
+            <td>
+                <div class="inlineEdit-edit-container">
+                    <span class="inlineEdit-action-edit">Edit</span>
+                </div>
+                <div class="inlineEdit-save-container">
+                    <span class="inlineEdit-action-save">Save</span>&nbsp;
+                    <span class="inlineEdit-action-cancel">Cancel</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td inlineEdit-type="hidden" inlineEdit-name="employeeId">2</td>
+            <td inlineEdit-type="text" inlineEdit-name="name">Harding</td>
+            <td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs">Manager</td>
+            <td inlineEdit-type="date" inlineEdit-name="hireDate">1998-02-02</td>
+            <td inlineEdit-type="number" inlineEdit-name="salary">52000</td>
+            <td inlineEdit-type="percentage" inlineEdit-name="commission">3%</td>
+            <td inlineEdit-type="textarea" inlineEdit-name="comments">Assertive</td>
+            <td>
+                <div class="inlineEdit-edit-container">
+                    <span class="inlineEdit-action-edit">Edit</span>
+                </div>
+                <div class="inlineEdit-save-container">
+                    <span class="inlineEdit-action-save">Save</span>&nbsp;
+                    <span class="inlineEdit-action-cancel">Cancel</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td inlineEdit-type="hidden" inlineEdit-name="employeeId">3</td>
+            <td inlineEdit-type="text" inlineEdit-name="name">Taft</td>
+            <td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs">Sales</td>
+            <td inlineEdit-type="date" inlineEdit-name="hireDate">1996-01-02</td>
+            <td inlineEdit-type="number" inlineEdit-name="salary">25000</td>
+            <td inlineEdit-type="percentage" inlineEdit-name="commission">5%</td>
+            <td inlineEdit-type="textarea" inlineEdit-name="comments">Some comments</td>
+            <td>
+                <div class="inlineEdit-edit-container">
+                    <span class="inlineEdit-action-edit">Edit</span>
+                </div>
+                <div class="inlineEdit-save-container">
+                    <span class="inlineEdit-action-save">Save</span>&nbsp;
+                    <span class="inlineEdit-action-cancel">Cancel</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td inlineEdit-type="hidden" inlineEdit-name="employeeId">4</td>
+            <td inlineEdit-type="text" inlineEdit-name="name">Hoover</td>
+            <td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs">Sales</td>
+            <td inlineEdit-type="date" inlineEdit-name="hireDate">1990-04-02</td>
+            <td inlineEdit-type="number" inlineEdit-name="salary">27000</td>
+            <td inlineEdit-type="percentage" inlineEdit-name="commission">0%</td>
+            <td inlineEdit-type="textarea" inlineEdit-name="comments">More comments</td>
+            <td>
+                <div class="inlineEdit-edit-container">
+                    <span class="inlineEdit-action-edit">Edit</span>
+                </div>
+                <div class="inlineEdit-save-container">
+                    <span class="inlineEdit-action-save">Save</span>&nbsp;
+                    <span class="inlineEdit-action-cancel">Cancel</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td inlineEdit-type="hidden" inlineEdit-name="employeeId">5</td>
+            <td inlineEdit-type="text" inlineEdit-name="name">Lincoln</td>
+            <td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs">Tech</td>
+            <td inlineEdit-type="date" inlineEdit-name="hireDate">1994-06-23</td>
+            <td inlineEdit-type="number" inlineEdit-name="salary">22500</td>
+            <td inlineEdit-type="percentage" inlineEdit-name="commission">14%</td>
+            <td inlineEdit-type="textarea" inlineEdit-name="comments">Some more comments</td>
+            <td>
+                <div class="inlineEdit-edit-container">
+                    <span class="inlineEdit-action-edit">Edit</span>
+                </div>
+                <div class="inlineEdit-save-container">
+                    <span class="inlineEdit-action-save">Save</span>&nbsp;
+                    <span class="inlineEdit-action-cancel">Cancel</span>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../src/jQuery.inlineEdit.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#sampleTable').inlineEdit({
+            saveButtonURL: 'success.json'
+        });
+    });
+
+    function getJobs() {
+        return {1: 'Admin', 2: 'CEO', 3: 'Engineer', 4: 'Manager', 5: 'Sales', 6: 'Tech'};
+    }
+</script>
+<!-- Google Analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-58444407-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
