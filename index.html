@@ -43,8 +43,53 @@
 </ul>
 </blockquote>
 
-<h1>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h1>
+<h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<ol>
+<li>For each column in a row that you want to be editable, specify the <code>type</code> and <code>name</code> inlineEdit attributes. <em>See the <a href="#inlineedit-attributes">inlineEdit Attributes</a> section for list of supported types</em>
+</li>
+<li>Create two <code>div</code>s in the column that will contain your action buttons. One of the <code>div</code>s should contain the <em>edit</em> button and the other should contain the <em>save</em> and <em>cancel</em> buttons. You may add more buttons to these divs as well</li>
+<li>
+<p>Add some classes to the two container <code>div</code>s and the buttons inside them. These containers will be toggled while editing
+ <strong>Example:</strong></p>
+
+<pre><code>&lt;tr&gt;
+    &lt;td inlineEdit-type="hidden" inlineEdit-name="employeeId"&gt;1&lt;/td&gt;
+    &lt;td inlineEdit-type="text" inlineEdit-name="name"&gt;Johnson&lt;/td&gt;
+    &lt;td inlineEdit-type="select" inlineEdit-name="job" inlineEdit-data="getJobs"&gt;Admin&lt;/td&gt;
+    &lt;td inlineEdit-type="date" inlineEdit-name="hireDate"&gt;1990-12-17&lt;/td&gt;
+    &lt;td inlineEdit-type="number" inlineEdit-name="salary"&gt;18000&lt;/td&gt;
+    &lt;td inlineEdit-type="percentage" inlineEdit-name="commission"&gt;0%&lt;/td&gt;
+    &lt;td inlineEdit-type="textarea" inlineEdit-name="comments"&gt;Hard working&lt;/td&gt;
+    &lt;td&gt;
+        &lt;div class="inlineEdit-edit-container"&gt;
+            &lt;span class="inlineEdit-action-edit"&gt;Edit&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="inlineEdit-save-container"&gt;
+            &lt;span class="inlineEdit-action-save"&gt;Save&lt;/span&gt;&amp;nbsp;
+            &lt;span class="inlineEdit-action-cancel"&gt;Cancel&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+</code></pre>
+</li>
+<li>
+<p>Attach the plugin to your table</p>
+
+<ol>
+<li>Specify the <code>saveButtonURL</code> option to tell the plugin where to <code>POST</code> the form data</li>
+<li>If not using the default class names for the action buttons and their containers, specify the class names in the corresponding option. <em>See the <a href="#options">options</a> section for more details</em>
+</li>
+</ol>
+
+<pre><code>$('#employeeTable').inlineEdit({
+    saveButtonURL: 'editRecord'
+});
+</code></pre>
+</li>
+<li>Make sure that the server returns a JSON with the value of key <code>success</code> as <code>true</code> or <code>false</code> depending upon whether the save was successful or not</li>
+</ol>
 
 <h2>
 <a id="inlineedit-attributes" class="anchor" href="#inlineedit-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>inlineEdit Attributes</h2>
@@ -193,7 +238,17 @@ All these attributes should be prefixed with <code>inlineEdit-</code>, or you ca
 
     </section>
 
-  
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-58444407-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
 
