@@ -154,9 +154,9 @@
 							var inputElement = $("<input />").attr({
 								type: 'text',
 								class: columnObject.class ? columnObject.class : settings.inputFieldClass,
-								name: columnObject.name,
-								value: columnObject.originalValue.trim()
-							});
+								name: columnObject.name
+							})
+							.val(columnObject.originalValue.trim());
 
 							// Handle type specific cases
 							var dataFunction, datePickerFunction, dataObj, optionElement, value;
@@ -193,8 +193,8 @@
 								case 'percentage':
 									$(inputElement).attr('type', 'number');
 									// Remove % sign
-									value = $(inputElement).attr('value').trim();
-									$(inputElement).attr('value', value.substr(0, value.length - 1));
+									value = columnObject.originalValue.trim();
+									$(inputElement).val(value.substr(0, value.length - 1));
 									break;
 
 								case 'select':
@@ -229,9 +229,9 @@
 									// Create textarea field
 									inputElement = $("<textarea></textarea>").attr({
 										class: columnObject.class ? columnObject.class : settings.textareaFieldClass,
-										name: columnObject.name,
-										value: columnObject.originalValue.trim()
-									});
+										name: columnObject.name
+									})
+									.val(columnObject.originalValue.trim());
 									break;
 							}
 
